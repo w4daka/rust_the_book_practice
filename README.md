@@ -7,7 +7,8 @@ This repository is a for tracking my progress in "The Rust Programming Language 
 ## Progress
 
 2026/01/13 1.1 インストール
-2026/01/14
+2026/01/14 1.2 Hello, world
+2026/01/14 1.3 Hello, Cargo
 
 ## 事始め
 
@@ -48,3 +49,20 @@ cargo fmt
 4. 式をセミコロンで終わらせていること。rustのほとんどのコードはセミコロンで終わる。
 
 - Rustは**AOTコンパイル言語**である。この利点はプログラムをコンパイルして、実行可能ファイルを誰かにあげ、あげた人がRustをインストールしていなくても実行できるところにある。
+
+### Hello, Cargo
+
+- CargoはRustのビルドシステム兼パッケージマネージャ
+- Cargoでプロジェクトを作成する方法は、
+
+```zsh
+cargo new hello_cargo
+```
+
+とした場合、hello_cargoという名前の新しディレクトリとプロジェクトが作成される。
+
+- Cargo.tomlは依存関係を記録する
+- プロジェクトをビルドしたいときは`cargo build`で実行できる。
+- `./target/debug/hello_cargo` で実行ファイルを実行できる。
+- `cargo run`を使うと、コードのコンパイルから、できた実行ファイルの実行までの全体を一つのコマンドで行える
+- `cargo check`コマンドはコードがコンパイルできるか、素早くチェックするが、実行ファイルは生成しない。
