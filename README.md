@@ -7,7 +7,9 @@ This repository is a for tracking my progress in "The Rust Programming Language 
 ## Progress
 
 2026/01/13 1.1 インストール
+
 2026/01/14 1.2 Hello, world
+
 2026/01/14 1.3 Hello, Cargo
 
 ## 事始め
