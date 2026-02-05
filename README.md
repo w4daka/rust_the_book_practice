@@ -68,3 +68,87 @@ cargo new hello_cargo
 - `./target/debug/hello_cargo` で実行ファイルを実行できる。
 - `cargo run`を使うと、コードのコンパイルから、できた実行ファイルの実行までの全体を一つのコマンドで行える
 - `cargo check`コマンドはコードがコンパイルできるか、素早くチェックするが、実行ファイルは生成しない。
+
+### 変数と可変性
+
+```rust
+fn main() {
+    let x = 10;
+    println!("The value of x is: {}", x);
+    x = 6;
+    println!("The value of x is: {}", x);
+}
+```
+
+といううコードを実行しようとすると、以下のようなエラーが発生する。
+
+```shell
+   Compiling variables v0.1.0 (/home/doxaripo/projects/rust_
+the_book_practice/variables)
+error[E0384]: cannot assign twice to immutable variable `x`
+ --> src/main.rs:4:5
+  |
+2 |     let x = 10;
+  |         - first assignment to `x`
+3 |     println!("The value of x is: {}", x);
+4 |     x = 6;
+  |     ^^^^^ cannot assign twice to immutable variable
+  |
+help: consider making this binding mutable
+  |
+2 |     let mut x = 10;
+  |         +++
+
+For more information about this error, try `rustc --explain
+E0384`.
+error: could not compile `variables` (bin "variables") due t
+o 1 previous error
+
+[Process exited 101]
+```
+
+これの説明は以下の通り。
+
+---
+
+An immutable variable was reassigned.
+
+Erroneous code example:
+
+```rust
+fn main() {
+    let x = 3;
+    x = 5; // error, reassignment of immutable variable
+}
+```
+
+By default, variables in Rust are immutable. To fix this error, add the keyword
+`mut` after the keyword `let` when declaring the variable. For example:
+
+```
+fn main() {
+    let mut x = 3;
+    x = 5;
+}
+```
+
+Alternatively, you might consider initializing a new variable: either with a new
+bound name or (by [shadowing]) with the bound name of your existing variable.
+For example:
+
+[shadowing]: https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html#shadowing
+
+```
+fn main() {
+    let x = 3;
+    let x = 5;
+}
+```
+
+---
+
+和訳(自分)
+
+---
+
+---
